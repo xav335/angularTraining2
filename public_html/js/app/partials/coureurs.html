@@ -1,4 +1,4 @@
-<h1>Nos valeureux coureurs sont au nombre de : {{ coureurs.length }}</h1>
+<h1>Nos valeureux coureurs sont au nombre de : {{ data.coureurs.length }}</h1>
 <table class="table table-condensed table-striped">
     <thead>
         <tr>
@@ -8,7 +8,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr data-ng-repeat="coureur in coureurs" >
+        <tr data-ng-repeat="coureur in data.coureurs" >
             <td><a data-ng-href="#/coureur/{{coureur.id}}">{{coureur.firstName}}</a></td>
              <td>{{coureur.gender}}</td>
             <td>{{coureur.birthDate.date | limitTo : 10 |date:'yyyy'}}</td>
