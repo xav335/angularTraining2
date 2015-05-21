@@ -3,16 +3,15 @@
     <thead>
         <tr>
             <th>Nom</th>
-            <th>Prénom</th>
-            <th>Date de naissance</th>
+            <th>Sexe</th>
+            <th>Année</th>
         </tr>
     </thead>
     <tbody>
         <tr data-ng-repeat="coureur in coureurs" >
-            <td>{{coureur.firstName}}</td>
-             <td>{{coureur.lastName}}</td>
-            <td>{{coureur.birthDate.date | limitTo : 10 |date:'dd/MM/yyyy'}}</td>
-            <td><a href="coureurs/{{coureur.id}}">voir</a></td>
+            <td><a data-ng-href="#/coureur/{{coureur.id}}">{{coureur.firstName}}</a></td>
+             <td>{{coureur.gender}}</td>
+            <td>{{coureur.birthDate.date | limitTo : 10 |date:'yyyy'}}</td>
         </tr>
     </tbody>
 </table>

@@ -12,6 +12,10 @@
             templateUrl:'js/app/partials/evenements.html',
             controller:'EvenementsController'
         }) 
+        .when('/coureur/:id', {
+            templateUrl:'js/app/partials/fiche.html',
+            controller:'CoureurController'
+        }) 
         .otherwise('/'); 
 
     }]);
