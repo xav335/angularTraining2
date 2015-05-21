@@ -8,7 +8,7 @@
             templateUrl:'js/app/partials/coureurs.html',
             controller:'CoureursController'
         })
-        .when('/route2', {
+        .when('/evenements', {
             templateUrl:'js/app/partials/evenements.html',
             controller:'EvenementsController'
         }) 
