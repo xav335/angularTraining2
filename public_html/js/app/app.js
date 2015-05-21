@@ -1,6 +1,6 @@
 
 (function(){
-    var app = angular.module('CapApp', ['ngRoute','Cap.coureurs.controller','Cap.evenements.controller']);
+    var app = angular.module('CapApp', ['ngRoute','Cap.coureurs.controller','Cap.evenements.controller','Cap.coureurs.services']);
 
     app.config(['$routeProvider', function($routeProvider){
         $routeProvider
@@ -14,7 +14,12 @@
         }) 
         .when('/coureur/:id', {
             templateUrl:'js/app/partials/fiche.html',
-            controller:'CoureurController'
+            controller:'CoureurController',
+            resolve:{
+                unCoureur:['$route','getUnCoureur', function($route,getUnCoureur){
+                    return getUnCoureur($route.current.params.id);    
+                }]
+            }
         }) 
         .otherwise('/'); 
 
