@@ -1,1 +1,5 @@
 <h1>{{ coureur.fullName }}</h1>
+<sup class="label" data-ng-class="{'label-info':coureur.gender==='M','label-danger':coureur.gender==='F'}">
+    {{coureur.gender | genre}}
+</sup>
+<p>Né(e) le {{coureur.birthDate.date | limitTo : 10 | date : 'dd/MM/yyyy'}}</p>

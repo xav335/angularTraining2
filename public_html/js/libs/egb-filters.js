@@ -1,5 +1,5 @@
 (function(){
-   var app = angular.module('CollectiveTodos.filters', []);
+   var app = angular.module('egb.filters', []);
    
    app.filter('importance', ['$sce', function($sce){
         $sce.trustAsHtml();
@@ -31,5 +31,17 @@
         };
     }]);
 
+    app.filter('genre', ['$filter', function($filter){
+        return function(val){
+            switch($filter('lowercase')(val)){
+                case 'm':
+                    return 'Masculin';
+                case 'f':
+                    return 'Feminin';
+                default:
+                    throw 'Sexe inconnu' ;
+            }
+        };
+    }]);
     
 })();
