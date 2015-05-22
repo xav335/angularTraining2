@@ -11,8 +11,18 @@
         return $resource('/api/runners/:id',{id:'@id'});    
     }]);
 
-    app.factory('getTousCoureurs',['Coureurs', function(Coureurs){
-        return Coureurs.query(); 
+    app.factory('getTousCoureurs',['Coureurs','$q','CreeNomComplet', function(Coureurs,$q,CreeNomComplet){
+        var differe = $q.defer();
+        
+        Coureurs.query(function(runners){
+            differe.resolve(runners);
+            angular.forEach(runners, function(runner){
+                runner.fullName = CreeNomComplet(runner.firstName,runner.lastName);
+            });
+        },function(error){
+            differe.reject('Erreur : '+ error);
+        }); 
+        return differe.promise;
     }]);
 /*
     app.factory ('getTousCoureurs', ['$http','CreeNomComplet', function($http,CreeNomComplet){
