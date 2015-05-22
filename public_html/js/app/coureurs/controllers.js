@@ -3,8 +3,8 @@
     
     //le ['$scope', est ajouter au cas ou on minififirait le script
     // afin que scope ne soit pas écrasé mais inutile si gardé en clair.
-    app.controller('CoureursController', ['$scope', 'getTousCoureurs',function($scope,getTousCoureurs){
-        $scope.data = getTousCoureurs;
+    app.controller('CoureursController', ['$scope', 'coureurs',function($scope,coureurs){
+        $scope.coureurs = coureurs.data;
         
     }]);
 

@@ -97,7 +97,7 @@ if(!method_exists($oCtl,$action)){
     $action = 'indexAction';
 }
 
-//sleep(rand(1,5));
+sleep(rand(0,3));
 
 // Appel action du contrôleur
 $oCtl->$action($params);

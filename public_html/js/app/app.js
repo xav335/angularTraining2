@@ -6,7 +6,12 @@
         $routeProvider
         .when('/', {
             templateUrl:'js/app/partials/coureurs.html',
-            controller:'CoureursController'
+            controller:'CoureursController',
+             resolve:{
+                coureurs:['getTousCoureurs', function(getTousCoureurs){
+                    return getTousCoureurs;    
+                }]
+            }
         })
         .when('/evenements', {
             templateUrl:'js/app/partials/evenements.html',
