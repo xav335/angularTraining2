@@ -15,14 +15,28 @@
         var differe = $q.defer();
         
         Coureurs.query(function(runners){
-            differe.resolve(runners);
             angular.forEach(runners, function(runner){
                 runner.fullName = CreeNomComplet(runner.firstName,runner.lastName);
             });
+            differe.resolve(runners);
         },function(error){
             differe.reject('Erreur : '+ error);
         }); 
         return differe.promise;
+    }]);
+
+    app.factory('getUnCoureur', ['Coureurs','$q','CreeNomComplet',function(Coureurs,$q,CreeNomComplet){
+        return function (id){
+            var differe = $q.defer();
+            Coureurs.get({id:id}, function(runner){
+                runner.fullName = CreeNomComplet(runner.firstName,runner.lastName);
+                differe.resolve(runner);
+            },function(error){
+                differe.reject('Erreur : '+ error);
+            }); 
+            
+            return differe.promise;
+        };
     }]);
 /*
     app.factory ('getTousCoureurs', ['$http','CreeNomComplet', function($http,CreeNomComplet){
