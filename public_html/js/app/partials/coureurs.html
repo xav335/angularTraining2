@@ -9,7 +9,7 @@
     </thead>
     <tbody>
         <tr data-ng-repeat="coureur in coureurs" >
-            <td><a data-ng-href="#/coureur/{{coureur.id}}">{{coureur.firstName}}</a></td>
+            <td><a data-ng-href="#/coureur/{{coureur.id}}">{{coureur.fullName}}</a></td>
              <td>{{coureur.gender}}</td>
             <td>{{coureur.birthDate.date | limitTo : 10 |date:'yyyy'}}</td>
         </tr>
