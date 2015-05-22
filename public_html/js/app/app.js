@@ -1,6 +1,6 @@
 
 (function(){
-    var app = angular.module('CapApp', ['ngRoute','Cap.coureurs.controller','Cap.evenements.controller','Cap.coureurs.services']);
+    var app = angular.module('CapApp', ['ngRoute','ngResource','Cap.coureurs.controller','Cap.evenements.controller','Cap.coureurs.services']);
 
     app.config(['$routeProvider', function($routeProvider){
         $routeProvider

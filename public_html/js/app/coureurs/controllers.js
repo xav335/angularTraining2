@@ -4,12 +4,12 @@
     //le ['$scope', est ajouter au cas ou on minififirait le script
     // afin que scope ne soit pas écrasé mais inutile si gardé en clair.
     app.controller('CoureursController', ['$scope', 'coureurs',function($scope,coureurs){
-        $scope.coureurs = coureurs.data;
+        $scope.coureurs = coureurs; //.data;
         
     }]);
 
     app.controller('CoureurController', ['$scope', 'unCoureur',function($scope,unCoureur){
-        $scope.coureur = unCoureur.data;
+        $scope.coureur = unCoureur; //.data;
     }]);
     
 })();
