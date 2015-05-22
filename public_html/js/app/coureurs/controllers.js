@@ -1,5 +1,5 @@
 (function(){
-    var app = angular.module('Cap.coureurs.controller', ['Cap.coureurs.services']);
+    var app = angular.module('Cap.coureurs.controller', []);
     
     //le ['$scope', est ajouter au cas ou on minififirait le script
     // afin que scope ne soit pas écrasé mais inutile si gardé en clair.
@@ -8,8 +8,8 @@
         
     }]);
 
-    app.controller('CoureurController', ['$scope', '$route' , 'getUnCoureur',function($scope,$route,getUnCoureur){
-        $scope.coureur = getUnCoureur($route.current.params.id);
+    app.controller('CoureurController', ['$scope', 'unCoureur',function($scope,unCoureur){
+        $scope.coureur = unCoureur.data;
     }]);
     
 })();

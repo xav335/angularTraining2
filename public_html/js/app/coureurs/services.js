@@ -10,18 +10,11 @@
        
     }]);
     
-     app.service ('getUnCoureur', ['getTousCoureurs', function(getTousCoureurs){
-         return function(id){
-             var coureurs = getTousCoureurs;
-             var res = {};
-             angular.forEach(coureurs, function(item){
-                 if(item.id===id){
-                     res=item;
-                     return;
-                 }
-             });
-             return res;
-         };   
+     app.factory ('getUnCoureur', ['$http', function($http){
+        return function(id){     
+            var promisedRunners = $http.get('/api/runners/'+id);
+            return promisedRunners;
+        };    
          
      }]);
 })();
