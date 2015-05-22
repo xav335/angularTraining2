@@ -3,3 +3,41 @@
     {{coureur.gender | genre}}
 </sup>
 <p>Né(e) le {{coureur.birthDate.date | limitTo : 10 | date : 'dd/MM/yyyy'}}</p>
+<div>
+    <ul  class="nav nav-pills">
+        <li data-ng-class="{active:infoActif}">
+            <a href="" data-ng-click="selectionPanneau(infoActif)">informations</a>
+        </li>   
+        <li data-ng-class="{active:commActif}">
+            <a href="" data-ng-click="selectionPanneau(infoActif)">Résultats</a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane" id="infos" data-ng-class="{active:infoActif}">
+            <h4>Informations</h4>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="resultat" data-ng-class="{active:commActif}">
+            <h4>Résultats</h4>
+            <table class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th>Evènement</th>
+                        <th>Date</th>
+                        <th>Dossard</th>
+                        <th>Distance</th>
+                        <th>temps</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-ng-repeat="resultat in coureur.results">
+                        <th>{{ resultat.eventName }}</th>
+                        <th>{{ resultat.eventDate }}</th>
+                        <th>{{ resultat.bibNumber }}</th>
+                        <th>{{ resultat.runDistance }}</th>
+                        <th>{{ resultat.runTime }}</th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

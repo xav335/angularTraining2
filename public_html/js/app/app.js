@@ -21,11 +21,21 @@
             templateUrl:'js/app/partials/fiche.html',
             controller:'CoureurController',
             resolve:{
-                unCoureur:['$route','getUnCoureur', function($route,getUnCoureur){
-                    return getUnCoureur($route.current.params.id);    
+                unCoureur:['$route','getUnCoureur','$q', function($route,getUnCoureur,$q){
+                    var id = $route.current.params.id;
+                        //return getUnCoureur($route.current.params.id);    
+                    var differe = $q.defer();
+                    var toutesPromesses = $q.all([getUnCoureur(id)]);//, getParticipationsUnCoureur(id)]);
+                    
+                    toutesPromesses.then(function(tousResultats){
+                        var coureurComplet = tousResultats[0];
+                        differe.resolve(coureurComplet);
+                    });
+                    return differe.promise;
                 }]
             }
-        }) 
+        })
+        
         .otherwise('/'); 
 
     }]);

@@ -10,6 +10,16 @@
 
     app.controller('CoureurController', ['$scope', 'unCoureur',function($scope,unCoureur){
         $scope.coureur = unCoureur; //.data;
+        $scope.infoActif = true;
+        $scope.selectionPanneau = function(infoActif){
+            if (infoActif){
+                $scope.infoActif = false;
+                $scope.commActif = true;
+            } else {
+                $scope.infoActif = true;
+                $scope.commActif = false;
+            }
+        };
     }]);
     
 })();
