@@ -11,6 +11,10 @@
         return $resource('/api/runners/:id',{id:'@id'});    
     }]);
 
+    app.service('ParticipationsCoureur',['$resource', function($resource){
+        return $resource('/api/runners/:id/entrants',{id:'@runnerId'});    
+    }]);
+
     app.factory('getTousCoureurs',['Coureurs','$q','CreeNomComplet', function(Coureurs,$q,CreeNomComplet){
         var differe = $q.defer();
         
@@ -36,6 +40,14 @@
             }); 
             
             return differe.promise;
+        };
+    }]);
+
+    app.factory('getParticipationsUnCoureur', ['ParticipationsCoureur','$q',function(ParticipationsCoureur,$q){
+        return function (id){
+            //si transformation du runTime passer par $q
+            //var differe = $q.defer();
+             return ParticipationsCoureur.query({id:id});
         };
     }]);
 /*

@@ -21,14 +21,15 @@
             templateUrl:'js/app/partials/fiche.html',
             controller:'CoureurController',
             resolve:{
-                unCoureur:['$route','getUnCoureur','$q', function($route,getUnCoureur,$q){
+                unCoureur:['$route','getUnCoureur','getParticipationsUnCoureur','$q', function($route,getUnCoureur,getParticipationsUnCoureur,$q){
                     var id = $route.current.params.id;
                         //return getUnCoureur($route.current.params.id);    
                     var differe = $q.defer();
-                    var toutesPromesses = $q.all([getUnCoureur(id)]);//, getParticipationsUnCoureur(id)]);
+                    var toutesPromesses = $q.all([getUnCoureur(id), getParticipationsUnCoureur(id)]);
                     
                     toutesPromesses.then(function(tousResultats){
                         var coureurComplet = tousResultats[0];
+                        coureurComplet.results = tousResultats[1];
                         differe.resolve(coureurComplet);
                     });
                     return differe.promise;
